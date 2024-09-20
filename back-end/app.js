@@ -41,6 +41,8 @@ app.get("/", (req, res) => {
 
 // production routes
 const chatBotRoute = require("./routes/chatBot.route.js");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser);
 
 app.use("/api/v1", chatBotRoute);
 app.use("/api/auth", require("./routes/auth.js"));
