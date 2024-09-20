@@ -6,7 +6,7 @@ const tripSchema = zod.object({
   Description: zod.string().nonempty(),
   StartDate: zod.date(),
   EndDate: zod.date(),
-  Location: zod.string().nonempty(),
+  // Location: zod.string().nonempty(),
   estimatedBudget: zod.string().nonempty(),
   TravellerCount: zod.number().optional(), // Not required, so optional
   localGuide: zod.boolean(),

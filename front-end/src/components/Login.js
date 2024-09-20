@@ -77,7 +77,7 @@ function Login() {
       <ToastContainer />
       <div className="container">
         <div className="backbox">
-          <div className="loginMsg">
+          <div className="loginMsg ">
             <div className="textcontent" onClick={handleSwitch1} id="switch1">
               <p className="title">{t("donthaveaccount")}</p>
               <Link to="/signup">
@@ -85,7 +85,7 @@ function Login() {
               </Link>
             </div>
           </div>
-          <div className="signupMsg visibility">
+          <div className="signupMsg visibility ">
             <div className="textcontent" onClick={handleSwitch2} id="switch2">
               <p className="title">{t("haveanaaccount")}</p>
               <Link to="/login">

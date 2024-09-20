@@ -22,10 +22,10 @@ const tripSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  Location: {
-    type: String,
-    required: true,
-  },
+  // Location: {
+  //   type: String,
+  //   required: true,
+  // },
   estimatedBudget: {
     type: String,
     required: true,
