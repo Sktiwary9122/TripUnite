@@ -3,7 +3,7 @@ const authN = require('../authN/tripsType');
 const Trip = require("../models/Trips");
 // const { create } = require("../models/User");
 // const mongoose = require('mongoose');
-exports.trip = async(req,res) => {
+exports.trip = async(req,res)=> {
    try {
       const createPayload = req.body;
       const isCorrect= authN.safeParse(createPayload)
