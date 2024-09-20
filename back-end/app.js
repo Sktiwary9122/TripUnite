@@ -1,0 +1,48 @@
+const express = require("express");
+const cors = require("cors");
+
+const rateLimit = require("express-rate-limit");
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 50, // Limit each IP to 50 requests per windowMs
+  message: {
+    success: false,
+    msg: "Too many requests from this IP, please try again after 10 minutes",
+  },
+  statusCode: 400,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req, res) => {
+    return req.ip;
+  },
+  validate: {
+    xForwardedForHeader: false, // Disable xForwardedForHeader validation
+  },
+});
+
+const app = express();
+app.use(cors("*"));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//rate limiter
+app.use(limiter);
+
+//testing routes
+app.get("/", (req, res) => {
+  console.dev({ route: "home sweet home" }, "home");
+  return res.status(200).send({
+    msg: `home route ${
+      process.env.production == "true" ? "production" : "dev"
+    }!`,
+  });
+});
+
+// production routes
+const chatBotRoute = require("./routes/chatBot.route.js");
+
+app.use("/api/v1", chatBotRoute);
+app.use("/api/auth", require("./routes/auth.js"));
+
+module.exports = { app };

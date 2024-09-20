@@ -1,0 +1,303 @@
+.background{
+    background-image: url("../Assets/images/Homepage-bgimg.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+.wrapper1{
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    perspective: 10px;
+    position: relative;
+}
+
+.container1{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    width: 100%;
+}
+
+.logo{
+    font-size: larger;
+    font-weight: 600;
+}
+
+.title1{
+    /* Adventure Awaits, Join the Journey */
+    position: absolute;
+    width: 70%;
+    top: 70px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 70px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.navbar{
+    width: 90%;
+    justify-content: space-between;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+    display: flex;
+
+}
+.main-logo{
+    background-image: url("../Assets/logo.png");
+    width: 5rem;
+    height: 2rem;
+    background-size: contain;
+    scale: 2;
+    margin-top: 1.5rem;
+}
+.options{
+    display: flex;
+    gap: 20px;
+    width: 60%;
+    justify-content: right;
+}
+.lang{
+    display: flex;
+    position: relative;
+    z-index: 5;
+}
+.lang>span{
+    position: absolute;
+    left: 4.5rem;
+    top: 0.1rem;
+}
+.options>ul{
+    cursor: pointer;
+}
+
+.places{
+    display:flex;
+    gap: 4rem;
+    position: absolute;
+    height: 100%;
+    top: 15rem;     
+}
+
+.places>div{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    width: 220px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Mumbai{
+    background-image: url(../Assets/images/mumbai.jpg);
+    left: 130px;
+    top: 300px;
+}
+
+.Jaipur{
+    left: 400px;
+    top: 275px;
+    background: url(../Assets/images/jaipur.jpg), #BFB6B6;
+    scale: 1.1;
+}
+
+.Kashmir{
+    left: 665px;
+    top: 250px;
+    background: url(../Assets/images/Kashmir.jpg), #BFB6B6;
+    scale: 1.2;
+}
+
+.Kerala{
+    right: 345px;
+    top: 275px;
+    background: url(../Assets/images/Kerala.jpg), #BFB6B6;
+    scale: 1.1;
+
+}
+
+.Agra{
+    right: 75px;
+    top: 300px;
+    background: url(../Assets/images/agra.jpg), #BFB6B6;
+}
+
+.places>div:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    filter: drop-shadow(0 0 10px #333);
+}
+
+.heading{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    height: 50px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.795) 0%, rgba(255, 255, 255, 0) 100%);
+    margin-top: -1px;
+    border-radius: 10px;
+}
+
+.bottom{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    position: relative;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.863) 0%, rgba(255, 255, 255, 0.034) 100%);
+}
+.left{
+    display: flex;
+    gap: 3px;
+    align-items: baseline;
+}
+.person{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.gender{
+    position: absolute;
+    left: 3px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 23px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+.price{
+    position: absolute;
+    bottom: 37px;
+    margin-left: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 23px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+.book{
+    width: 82px;
+    height: 35px;
+    left: 1338px;
+    top: 627px;
+    background: #9085C3;
+    opacity: 0.7;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 29px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+.book:hover{
+    background: #9183d6; 
+    opacity: 1;
+}
+.swipe{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    height: 100%;
+    top: 35rem;
+    z-index: 100;
+}
+.left1{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+   
+    background-color: #9085C3;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+.right1{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    
+    background-color: #9085C3;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+.create-trip{
+    position: absolute;
+    top: 39rem;
+    right: 13rem;
+    filter: drop-shadow(0 0 5px #333);
+
+}
+.create-trip>button{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 20px;
+    border: none;
+    background-color:#a79ae1;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* .navbar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 35px;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+} */
+
+
+
+
+

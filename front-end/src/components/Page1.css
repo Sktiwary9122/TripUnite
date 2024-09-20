@@ -1,0 +1,140 @@
+.page{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    /* background: url("../Assets/home-assets/Homepage-bgimg.jpg") no-repeat center ;
+    background-size: contain;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover; */
+    width: 100vw;
+    height: 100vh;
+}
+.mainbody{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.title1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    color: #FFFFFF;
+}
+.lang1{
+    display: flex;
+    gap: 3px;
+}
+.lang1>span{
+    margin-top: 1px;
+}
+.TripUnite{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    color: rgba(151, 64, 237, 1);
+    margin-top: 8rem;
+}
+.logo2{
+    font-size: 30px;
+    margin-top: 1.75rem;
+    font-weight: bold;
+}
+.lang1>p{
+    margin-top: -1px;
+}
+.navbar1{
+    width: 90%;
+    justify-content: space-between;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+    display: flex;
+    z-index: 50;
+}
+.options1{
+    display: flex;
+    gap: 3rem;
+    font-size: 20px;
+    margin-top: 2rem;
+}
+.options1>div{
+    cursor: pointer;
+}
+
+.start>button , .explore>button{
+    background: rgba(191, 158, 230, 0.8);
+    width: 15rem;
+    height: 4rem;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    font-size: 26px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer;
+}
+.search_bar{
+    width: 60%;
+    background: rgba(191, 158, 230, 0.8);
+    border-radius: 50px;
+    padding: 20px;
+    border: none;
+}
+
+.search_bar::placeholder{
+    font-family: 'Roboto';
+    position: absolute;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+    top: 1.25rem;
+    left: 1.5rem;
+}
+input{
+    color: #FFFFFF;
+    font-size: larger;
+    padding-left: 2rem;
+}
+.explore>button{
+    position: absolute;
+    right: 10rem;
+    top: 600px;
+    /* filter: drop-shadow(0 0 5px #5b5a5a); */
+}
+.visible{
+    display: none;
+}
+.language{
+    display: flex;
+}
+.logout{
+    padding: 10px;
+    width: 100px;
+    font-size: large;
+    border-radius: 12px;
+    border: none;
+    background-color: rgb(167, 103, 227);
+    margin-bottom: 0.6rem;
+    color: white;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+}

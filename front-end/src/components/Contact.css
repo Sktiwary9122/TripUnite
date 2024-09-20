@@ -1,0 +1,136 @@
+.contact-wrapper{
+    width: 100%;
+    height: auto;
+    background: linear-gradient(180deg, rgba(103, 115, 200, 0.7) 0%, rgba(217, 181, 247, 0.7) 97.74%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-logo{
+    margin-top: 4rem;
+}
+.contact-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+    width: 90%;
+}
+
+.contact-navbar{
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: -2rem;
+}
+
+.contact-options{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+   
+}
+
+
+.contact-heading{
+    color: white;
+    font-weight: 700;
+    font-size: 2.75rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.contact-subheading{
+    color: white;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-left: -35rem;
+    margin-top: -2rem;
+    
+}
+
+.contact-section{
+    width: 53rem;
+    background: #64649C;
+    border-radius: 1rem;
+    display: flex;
+    color: white;
+    
+   
+}
+
+
+.contact-left{
+    width: 25rem;
+    background: #bbb9b945;
+    border-radius: 1rem;
+    color: #FFFFFF;
+    padding: 2rem;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-text{
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-top: -0.2rem;
+    margin-bottom: -1rem;
+}
+
+.contact-input{
+    width: 18rem;
+    height: 2rem;
+    background: #B09CD2;
+    opacity: 0.8;
+    border-radius: 0.5rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-message>input{
+    height: 6rem;
+}
+
+.contact-submit{
+    width: 10rem;
+    height: 2.5rem;
+    background: rgba(102, 101, 157, 0.973);
+    border-radius: 0.7rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-top: 2rem;
+    border:none;
+}
+
+.contact-right{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    gap: 1.5rem;
+}
+
+.contact-right>h2{
+    width: 25rem;
+    font-weight: 700;
+    font-size: 2.7rem;
+}
+
+.contact-information{
+    font-weight: 500;
+    font-size: 1rem;
+}
+.contact-icons{
+    display: flex;
+    font-size: 2rem;
+    gap: 5px;
+}

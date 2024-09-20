@@ -1,0 +1,140 @@
+.create-wrapper{
+    width: 100vw;
+    height: auto;
+    background: linear-gradient(180deg, rgba(76, 85, 153, 0.7) 0%, rgba(136, 107, 160, 0.7) 97.74%);
+}
+.create-logo{
+    background-image: url("../Assets/logo.png");
+    width: 5rem;
+    height: 2rem;
+    background-size: contain;
+    scale: 2;
+    margin-top: 1.75rem;
+    margin-left: 2rem;
+}
+.create-navbar{
+    display: flex;
+    font-weight: 400;
+    justify-content: space-between;
+    width: 90%;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    display: flex;
+    padding: .5rem 3.5rem;
+}
+
+.create-options{
+    display: flex;
+    gap: 2.5rem;
+    width: 40%;
+    justify-content: right;
+}
+.create-options>ul{
+    cursor: pointer;
+}
+.create-section{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 10rem;
+    position: relative;
+}
+
+.create-left{
+    position: fixed;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #FFFFFF;
+    padding-left: 4rem;
+    width: 30%;
+}
+
+.create-right{
+    color: white;
+    background: rgba(7, 7, 7, 0.153);
+    border-radius: 1.5rem;
+    width: 40%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    margin-left: 50%;
+}
+
+.create-head{
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: #FFFFFF;
+    
+}
+
+.create-lang{
+    display: flex;
+    gap: 4px;
+    z-index: 5;
+}
+.create-lang>span{
+    margin-top: 4px;
+}
+.create-name{
+    display: flex;
+    gap: 1.5rem;
+}
+.budget-meet{
+    display: flex;
+    gap: 1.75rem;
+}
+.create-tripinput1{
+    width: 15.5rem;
+    height: 2rem;
+    background: #ceb8f3;
+    opacity: 0.8;
+    border-radius: 0.4rem;
+}
+
+#create-description{
+    height: 5rem;
+    width: 95%;
+}
+
+.create-date{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.create-radio{
+    display: flex;
+    gap: 2rem;
+}
+
+.create-age{
+    display: flex;
+    justify-content: space-between;
+}
+
+#create-remarkstext{
+    height: 5rem;
+    width: 100%;
+}
+
+
+.create-button{
+    background: rgba(173, 125, 228, 0.7);
+    opacity: 0.7;
+    border-radius: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #FFFFFF;
+    width:100%;
+    height: 4rem;
+}
+input{
+    border: none;
+}

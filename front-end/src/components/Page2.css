@@ -1,0 +1,124 @@
+#page_2{
+ /* background: url("../Assets/home-assets/homepage-bgimg2.jpeg") no-repeat center  ;
+ background-size: contain;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover; */
+    width: 100vw;
+    height: 800px;
+}
+
+.features{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 30px;
+}
+
+
+.upcomingtrips{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 59px;
+    text-align: center;
+    margin-top: 22rem;
+    color: #FFFFFF;
+}
+
+.upcoming_trips{
+    position: absolute;
+    width: 100%;
+    top: 430px;
+    display: flex;
+    gap: 2rem;
+    left: 15%;
+    
+}
+
+.box{
+    width: 240px;
+    height: 280px;
+    background: #9085C3;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.head{
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 550;
+    font-size: 35px;
+    line-height: 59px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.box>i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.description{
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.upcoming_trips>.box{
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+#card1{
+    background-image: url(../Assets/home-assets/Kashmir.jpg);
+}
+
+#card2{
+    background-image: url(../Assets/home-assets/Kerala.jpg);
+}
+
+#card3{
+    background-image: url(../Assets/home-assets/mumbai.jpg);
+}
+
+#card4{
+    background-image: url(../Assets/home-assets/agra.jpg);
+}
+#page2-globe{
+    position: absolute;
+    top: 46%;
+    font-size: 38px;
+}
+#page2-book{
+    position: absolute;
+    top: 46%;
+    font-size:38px ;
+}
+#page2-location{
+    position: absolute;
+    top: 46%;
+    font-size:45px ;
+}
+.description{
+    margin-top: 3.7rem;
+}

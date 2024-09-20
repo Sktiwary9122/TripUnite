@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Footer{
+    font-family: 'Roboto';
+    font-style: normal;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    padding: 20px;
+    background-color: #bbb1ff;
+    color: rgb(124, 115, 115);
+    font-size: larger;
+    border-top: 10px solid rgb(142, 85, 196);
+    width: 100%;
+}
+
+.column1{
+    width: 10%;
+    margin-top: -20px;
+    margin-left: 3rem;
+
+}
+
+.footer-logo{
+    background-image: url("../Assets/logo.png");
+    width: 5rem;
+    height: 2rem;
+    background-size: contain;
+    scale: 2;
+    margin-top: 1.75rem;
+    margin-left: 2rem;
+}
+.contact{
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+    gap: 4rem;
+    margin-right: 6rem;
+}
+.column2{
+    display: flex;
+    height: 160px;
+    flex-direction: column;
+    margin-top: -2rem;
+}
+.column2>h3{
+    margin-top: 2rem;
+    margin-bottom: -0.5rem;
+}
+.column3{
+    display: flex;
+    height: 160px;
+    flex-direction: column;
+    margin-top: -2rem;
+}
+.column3>h3{
+    margin-top: 2rem;
+    margin-bottom: -0.5rem;
+}
+.column4{
+    display: flex;
+    height: 160px;
+    flex-direction: column;
+    margin-top: -2rem;
+}
+.column4>h3{
+    margin-top: 2rem;
+    margin-bottom: -0.5rem;
+}
+.icons>a{
+    color: rgb(124, 115, 115);
+    font-size: 30px;
+    margin-right: 15px;
+}
+/* .column5-div{
+    height: 100px;
+    width: 100px;
+    border: 3px solid rgb(124, 115, 115);
+    border-radius: 50%;
+    margin-top: 1.13rem;
+    margin-right: -30.5px;
+
+} */

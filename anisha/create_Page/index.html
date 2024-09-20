@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Create Trip</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="navbar">
+                <ul class="logo">TRIPUNITE</ul>
+                <ul class="options">
+                  <ul class="home">Home</ul>
+                  <ul class="lang">EN<i class="fa-solid fa-globe"></i></ul>
+                  <ul class="about">About</ul>
+                  <ul class="contact">Contact</ul>
+                </ul>
+            </div>
+            <div class="section">
+                <div class="left">
+                    <h1>Tailored journeys,<br> crafted <br> just <br> for you.</h1>
+                </div>
+                <div class="right">
+                    <h2 class="head">Create Trip</h2>
+                    <div class="name">
+                        <div class="placeholder">
+                            <p>Name of the Trip</p>
+                            <input type="text" class="tripinput1">
+                        </div>
+                        <div class="input">
+                            <p>Destination</p>
+                            <input type="text" class="tripinput1">
+                        </div>
+                    </div>
+                    <div class="description">
+                        <p>Description</p>
+                        <input type="text" id="description" class="tripinput1">
+                    </div>
+                    <div>
+                        <p>Date</p>
+                        <div class="date">
+                            <div class="start">
+                                <p>Start:</p>
+                                <input type="date" placeholder="Start" class="tripinput1">
+                            </div>
+                            <div class="end">
+                                <p>End:</p>
+                                <input type="date" placeholder="End" class="tripinput1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="budget">
+                        <p>Estimated Budget</p>
+                        <input type="text" class="tripinput1">
+                    </div>
+                    <div class="meetup">
+                        <p>Meetup</p>
+                        <input type="text" class="tripinput1" placeholder="Enter Location">
+                    </div>
+
+                    <div class="guide">
+                        <p>Need a Local Guide</p>
+                        <div class="radio">
+                            <div class="yes">
+                                <input type="radio" id="yes" value="yes" />
+                                <label for="yes">Yes</label>
+                            </div>
+                            <div class="no">
+                                <input type="radio" id="no" value="no" />
+                                <label for="no">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="members">
+                        <p>Travellers</p>
+                        <input type="number" class="tripinput1">
+                    </div>
+
+                    <div>
+                        <p>Preference</p>
+                        <div class="radio">
+                            <div class="girls">
+                                <input type="radio" id="female"/>
+                                <label for="female">Only Female</label>
+                            </div>
+                            <div class="boys">
+                                <input type="radio" id="male"/>
+                                <label for="male">Only Male</label>
+                            </div>
+                            <div class="no_pref">
+                                <input type="radio" id="none"/>
+                                <label for="none">No Preference</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p>Age range</p>
+                        <div class="age">
+                            <input type="number" class="tripinput1" placeholder="min">
+                            <input type="number" class="tripinput1" placeholder="max">
+                        </div>
+                    </div>
+                    
+                    <div class="remark">
+                        <p>Remarks</p>
+                        <input type="text" class="tripinput1" id="remarkstext">
+                    </div>
+                    
+                    <button class="button">
+                        Create
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

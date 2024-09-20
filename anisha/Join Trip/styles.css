@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.join-wrapper{
+    width: 100%;
+    height: auto;
+    background: linear-gradient(180deg, rgba(103, 115, 200, 0.7) 50%, rgba(217, 181, 247, 0.7) 90.74%);
+}
+
+
+
+.join-navbar{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    display: flex;
+    padding: 1.5rem 3.5rem;
+}
+
+.join-options{
+    display: flex;
+    gap: 2.5rem;
+}
+
+.join-section{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 3.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.join-left{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 4rem;
+    padding-top: 4rem;
+}
+
+.join-abouttrip{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.join-left>h1{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+}
+
+.join-left>p{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+
+.join-details{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+}
+
+.join-photo{
+    width: 27rem;
+}
+
+
+
+.join-right{
+    width:30%;
+}
+
+.join-right>h1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.7rem;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.join-join{
+    background: #6e6d6d;
+    opacity: 0.2;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.join-input{
+    width: 17rem;
+    height: 2.5rem;
+    background: #ceb8f3;
+    opacity: 0.8;
+    border-radius: 0.4rem;
+}
+
+.join-radio{
+    display: flex;
+    gap: 1rem;
+}
+
+.join-price{
+    display: flex;
+    gap: 1.5rem;
+
+}
+
+.join-placeholder{
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+
+
+    color: #FFFFFF;
+
+
+}
+
+.join-pay{
+    width: 5rem;
+    height: 2rem;
+    background: rgba(102, 101, 157, 0.7);
+    border-radius: 15px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.join-submit{
+    width: 9rem;
+    height: 4rem;
+    background: rgba(75, 74, 147, 0.7);
+
+    border-radius: 15px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #FFFFFF;
+
+
+}
+button{
+    background-color: rgba(75, 74, 147, 0.7);
+}
+
+.join-placeholder{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+
+    color: #FFFFFF;
+}

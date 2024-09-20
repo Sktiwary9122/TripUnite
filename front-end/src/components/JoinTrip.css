@@ -1,0 +1,217 @@
+
+
+.join-wrapper{
+    width: 100%;
+    height: auto;
+    background: linear-gradient(180deg, rgba(103, 115, 200, 0.7) 50%, rgba(217, 181, 247, 0.7) 90.74%);
+    overflow: hidden;
+}
+
+
+
+.join-navbar{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    display: flex;
+    padding-left:3.5rem;
+    padding-right:3.5rem;
+    padding-bottom: 2rem;
+}
+
+.join-options{
+    display: flex;
+    gap: 2.5rem;
+}
+
+.join-section{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 3.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    width: 100%;
+}
+.join-left{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.join-abouttrip{
+    display: flex;
+}
+
+.join-left>h1{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    margin-top: -1rem;
+}
+
+.join-left>p{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    text-align: justify;
+    margin-top: -1.2rem;
+    margin-bottom: 3rem;
+}
+
+.date-price{
+    display: flex;
+    gap: 3.5rem;
+}
+.date-price>p{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.meet-guide{
+    display: flex;
+    gap: 6rem;
+    margin-top: -2rem;
+}
+.meet-guide>p{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.join-details{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    margin-top: -1.4rem;
+    width: 50%;
+}
+.join-details>p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+    margin-top: -0.5rem;
+    font-weight: bold;
+}
+.Data{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.join-photo{
+    background: url("../Assets/Kashmir1.jpg");
+    width: 27rem;
+    margin-left: 8rem;
+    height: 23rem;
+    object-fit: contain;
+    position: absolute;
+    left: 22%;
+    top: 46%;
+}
+
+.join-logo{
+    background-image: url("../Assets/logo.png");
+    width: 5rem;
+    height: 2rem;
+    background-size: contain;
+    scale: 2;
+    margin-top: 1.75rem;
+    margin-left: 3rem;
+}
+
+.join-right{
+    width:30%;
+    margin-right: 12rem;
+    margin-top: -3.5rem;
+}
+
+.join-right>h1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.7rem;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 1rem;
+    
+}
+
+.join-join{
+    background: #6e6d6d54;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.join-input{
+    width: 17rem;
+    height: 2.5rem;
+    background: #ceb8f3;
+    opacity: 0.8;
+    border-radius: 0.4rem;
+}
+
+.join-radio{
+    display: flex;
+    gap: 1rem;
+}
+
+.join-price{
+    display: flex;
+    gap: 1.5rem;
+
+}
+
+.join-placeholder{
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+
+
+    color: #FFFFFF;
+
+
+}
+
+.join-pay{
+    width: 5rem;
+    height: 2rem;
+    background: rgba(102, 101, 157, 0.7);
+    border-radius: 15px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #FFFFFF;
+    border: none;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.join-submit{
+    width: 9rem;
+    height: 4rem;
+    background: rgba(75, 74, 147, 0.7);
+    border: none;
+    border-radius: 15px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+button{
+    background-color: rgba(75, 74, 147, 0.7);
+}
+
+.join-placeholder{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+
+    color: #FFFFFF;
+}
