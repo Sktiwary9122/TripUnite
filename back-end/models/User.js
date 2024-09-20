@@ -1,3 +1,4 @@
+//user Auth Schema
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
@@ -14,6 +15,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Trip:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Trips'
+    }
+  ]
 });
+
 
 module.exports = mongoose.model("User", UserSchema);

@@ -1,11 +1,15 @@
 const dotenv = require("dotenv");
+
 const connectDB = require("./db/index.js");
+// const bodyParser = require('bodyParser');
+
 const { app } = require("./app.js");
 require("./utils/customConsole.js");
 
 dotenv.config({
   path: "./.env",
 });
+
 
 connectDB()
   .then(() => {
