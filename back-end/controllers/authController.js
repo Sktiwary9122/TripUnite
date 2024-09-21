@@ -77,7 +77,7 @@ exports.loginUser = async (req,res)=>{
     }
     
     const token = jwt.sign({
-      id: user.id,
+      id: user._id,
     },
       process.env.jwt_secret,
      {
@@ -89,6 +89,9 @@ exports.loginUser = async (req,res)=>{
 
     user.AccessToken = token
     await user.save();
+
+    const decoded = jwt.verify(token, process.env.jwt_secret);
+    req.user = decoded.id;
     
     const options = {
        httpOnly: true,
@@ -112,6 +115,7 @@ exports.logoutUser = async (req, res) => {
     // Verify the JWT token to extract the user ID
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decoded.id;
+
 
     // Find the user in the database using the decoded ID
     const user = await User.findOne({ _id: userId });
