@@ -99,25 +99,38 @@ exports.loginUser = async (req,res)=>{
 }
 
 exports.logoutUser = async (req, res) => {
-   console.log(req.cookies);
-   try {
-    const cookie = req.cookies;
- 
-    if(!cookie){
-        return res.status(400).json({message: "No cookie found"});
+  try {
+
+    const cookies = req.cookies;  
+   
+    if (!cookies || !cookies.AccessToken) {
+      return res.status(400).json({ message: "No cookie found" });
     }
-    const Token = cookie.AccessToken;
-    const user = await User.findOne({_id: Token.id});
-    
-    if(!user){
-        return res.status(400).json({message: "User not found"});
+
+    const token = cookies.AccessToken;
+
+    // Verify the JWT token to extract the user ID
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+    // Find the user in the database using the decoded ID
+    const user = await User.findOne({ _id: userId });
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
     }
+
+    // Invalidate the user's access token by setting it to null
     user.AccessToken = null;
-    user.save();
- 
-    res.clearCookie("AccessToken", {path: "/login"});
-    res.status(200).json({message: "User logged out successfully"});
-   } catch (error) {
-       console.log(error);
-   } 
+    await user.save();
+
+    // Clear the token cookie
+    res.clearCookie("AccessToken", { path: "/" });
+
+    // Send a success response
+    return res.status(200).json({ message: "User logged out successfully" });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
+};
