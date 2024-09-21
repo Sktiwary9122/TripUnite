@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const session = require("express-session");
 
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
@@ -28,6 +29,17 @@ app.use(cors({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({
+  secret: 'securekarde',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { 
+    secure: false, // set to false for HTTP in localhost
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
+}));
+
 
 //rate limiter
 app.use(limiter);

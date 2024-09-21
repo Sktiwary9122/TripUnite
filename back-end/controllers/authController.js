@@ -167,3 +167,4 @@ exports.logoutUser = async(req, res) => {
     message: "User logged out successfully",
   })
 }
+// Middleware to verify JWT token from cookies

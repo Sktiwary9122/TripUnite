@@ -5,26 +5,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from '../context/userContext';
 function Page1() {
-  const userIdRef = useContext(UserContext);
-  const userName = userIdRef.current;
-
- 
+  const [userName,setUsername] = useState(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [loggedInUser, setLoggedInUser] = useState(null);
-
-  
+  const [loggedInUser, setLoggedInUser] = useState(false);
 
   useEffect(() => {
-    if(!userName){
-      setLoggedInUser(null);
-    }
-    else{
-      setLoggedInUser(userName)
+    const storedLocalData = localStorage.getItem('userData');
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (isAuthenticated === 'true' && storedLocalData) {
+      const userData = JSON.parse(storedLocalData); // Parse the stored JSON data
+      setLoggedInUser(true);
+      setUsername(userData.Name); // Use the parsed data
+      console.log(userData.Name); // Log the name to the console
     }
   }, []);
   function visibleHandler1() {

@@ -1,5 +1,4 @@
 const dotenv = require("dotenv");
-
 const connectDB = require("./db/index.js");
 // const bodyParser = require('bodyParser');
 

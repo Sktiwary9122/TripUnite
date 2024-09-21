@@ -1,4 +1,4 @@
-import React, { useContext, useEffect ,useState}from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -7,19 +7,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from '../context/userContext';
 
-
 function Login() {
-
   const userIdRef = useContext(UserContext);
-
-  // useEffect(() => {
-  //   userIdRef.current = "12345"; 
-  // }, []);
-  // const [isLoggedin,setisLoggendin] = useState('');
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userData, setUserData] = useState({});
   const navigate = useNavigate();
-
-
   const { t } = useTranslation();
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -28,6 +20,19 @@ function Login() {
     email: "",
     password: "",
   });
+  
+  
+  useEffect(() => {
+      const storedAuth = localStorage.getItem('isAuthenticated');
+      const storedUserData = localStorage.getItem('userData');
+
+      if (storedAuth === 'true' && storedUserData) {
+        setIsAuthenticated(true);
+        const user = JSON.parse(storedUserData);
+        setUserData(user);
+        userIdRef.current = `Welcome ${user.fullName}`; // Set userIdRef
+      }
+  }, [userIdRef]);
 
   const handleSwitch1 = () => {
     document.querySelector(".loginMsg").classList.toggle("visibility");
@@ -59,22 +64,23 @@ function Login() {
       const response = await axios.post(
         "http://localhost:8000/api/auth/login",
         loginData,
-        { withCredentials: true,
-          headers:{
+        { 
+          withCredentials: true,
+          headers: {
             'Content-Type': 'application/json',
-
           }
-         }
+        }
       );
-      // console.log({"hello":response.data.Name});
       toast.success("Login successful!");
-      // setisLoggendin(response.data.Name);
-      const userId = response.data.Name; // The backend sends the user ID
+      const userId = response.data.Name;
       userIdRef.current = userId;
+      setIsAuthenticated(true);
+      setUserData(response.data);
+      localStorage.setItem('isAuthenticated', 'true'); // Use sessionStorage
+      localStorage.setItem('userData', JSON.stringify(response.data)); // Use sessionStorage
       navigate("/");
-        
     } catch (err) {
-      toast.error(err.response?.data?.errors[0]?.msg ||"Login failed!");
+      toast.error(err.response?.data?.errors[0]?.msg || "Login failed!");
     }
   };
 
@@ -85,12 +91,12 @@ function Login() {
         signupData
       );
       toast.success("Signup successful!");
-      navigate("/login");  // Navigate to the homepage or desired page
+      navigate("/login");
     } catch (err) {
       toast.error(err.response?.data?.errors[0]?.msg || "Signup failed!");
     }
   };
-  
+
   return (
     <div className="background1">
       <ToastContainer />
