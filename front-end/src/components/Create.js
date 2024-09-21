@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { TfiWorld } from 'react-icons/tfi';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 
 function Create() {

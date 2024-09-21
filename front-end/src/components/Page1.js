@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Page1.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Page1() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [loggedInUser, setLoggedInUser] = useState(null);
   useEffect(() => {
@@ -19,10 +23,14 @@ function Page1() {
   function visibleHandler1() {
     document.querySelector(".logout").classList.toggle("visible");
   }
-  const handleLogOut = () => {
+  const handleLogOut = async() => {
     localStorage.removeItem("user");
     setLoggedInUser(null);
     visibleHandler1();
+    await axios.post(" http://localhost:8000/api/auth/logout");
+    toast.success("Logged out");
+    navigate("/login")
+
   };
 
   return (
@@ -53,7 +61,7 @@ function Page1() {
               <div className="contact1">{t("login")}</div>
             </Link>
           )}
-          <div className="logout visible " onClick={handleLogOut}>
+          <div className="logout  " onClick={handleLogOut}>
             Log Out
           </div>
         </div>

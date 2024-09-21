@@ -120,11 +120,12 @@ exports.logoutUser = async (req, res) => {
     }
 
     // Invalidate the user's access token by setting it to null
+    console.log(req.cookies.AccessToken);
     user.AccessToken = null;
     await user.save();
 
     // Clear the token cookie
-    res.clearCookie("AccessToken", { path: "/" });
+    res.clearCookie("AccessToken");
 
     // Send a success response
     return res.status(200).json({ message: "User logged out successfully" });

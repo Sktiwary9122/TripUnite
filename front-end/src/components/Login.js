@@ -44,34 +44,31 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(
+      await axios.post(
         "http://localhost:8000/api/auth/login",
         loginData
-      );
-      console.log(res);
-      localStorage.setItem("user", res.data.fullName);
+      )
       toast.success("Login successful!");
       navigate("/");
+        
     } catch (err) {
-      toast.error(err.response.data.errors[0].msg || "Login failed!");
+      toast.error(err.response?.data?.errors[0]?.msg ||"Login failed!");
     }
   };
 
   const handleSignup = async () => {
     try {
-      const res = await axios.post(
+      await axios.post(
         "http://localhost:8000/api/auth/register",
         signupData
       );
-      console.log(res);
-      localStorage.setItem("user", res.data.fullName);
       toast.success("Signup successful!");
-      navigate("/");
+      navigate("/login");  // Navigate to the homepage or desired page
     } catch (err) {
-      toast.error(err.response.data.errors[0].msg || "Signup failed!");
+      toast.error(err.response?.data?.errors[0]?.msg || "Signup failed!");
     }
   };
-
+  
   return (
     <div className="background1">
       <ToastContainer />
