@@ -6,12 +6,13 @@ import images from '../image';
 function Trips(props) {
     
     const [img,setImg] = useState('');
-    useEffect(() => {
+    useEffect(() => { 
         const randomNumber = Math.floor(Math.random() * 9);
         if (images[randomNumber]) {
             setImg(images[randomNumber].url);
         }
     }, []);
+    const [im1g,setIm1g] = useState('');
   return (
     <div className='w-[40%] h-[50%]'>
         <div className=""
