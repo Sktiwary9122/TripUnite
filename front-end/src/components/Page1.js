@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import "./Page1.css";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -7,7 +7,11 @@ import LanguageSelector from "./LanguageSelector";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from '../context/userContext';
 function Page1() {
+  const userIdRef = useContext(UserContext);
+
+  const userId = userIdRef.current;
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -23,14 +27,24 @@ function Page1() {
   function visibleHandler1() {
     document.querySelector(".logout").classList.toggle("visible");
   }
-  const handleLogOut = async() => {
-    localStorage.removeItem("user");
-    setLoggedInUser(null);
-    visibleHandler1();
-    await axios.post(" http://localhost:8000/api/auth/logout");
-    toast.success("Logged out");
-    navigate("/login")
-
+  const handleLogOut = async () => {
+    try {
+      // Clear user data from localStorage
+      localStorage.removeItem("user");
+      setLoggedInUser(null); // Assuming this is for managing the user state in the app
+  
+      // Call the logout endpoint
+      await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
+  
+      // Show success notification
+      toast.success("Logged out successfully");
+  
+      // Navigate to the login page
+      navigate("/login");
+    } catch (error) {
+      // Handle any error that occurs during logout
+      toast.error("Logout failed");
+    }
   };
 
   return (

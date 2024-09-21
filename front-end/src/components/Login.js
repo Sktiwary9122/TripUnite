@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect ,useState}from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from '../context/userContext';
+
 
 function Login() {
+
+  const userIdRef = useContext(UserContext);
+
+  // useEffect(() => {
+  //   userIdRef.current = "12345"; 
+  // }, []);
+
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -44,10 +53,15 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      await axios.post(
+      const response=- await axios.post(
         "http://localhost:8000/api/auth/login",
-        loginData
-      )
+        loginData,
+        { withCredentials: true }
+      );
+      // console.log("hello->",response.Stringify())
+      const userId = response.data.id; 
+      userIdRef.current = userId;
+
       toast.success("Login successful!");
       navigate("/");
         

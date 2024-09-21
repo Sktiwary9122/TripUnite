@@ -65,7 +65,8 @@ exports.loginUser = async (req,res)=>{
       return res.status(400).json({errors:[{msg:"Invalid email or password type"}]})
     }
     
-    const user = await User.findOne({email:email});
+    const user = await User.findOne({
+      email:email});
      
     if(!user){
     return res.status(404).json({message: "User not found"});
@@ -98,7 +99,11 @@ exports.loginUser = async (req,res)=>{
        secure:true
     }
     res.cookie("AccessToken", user.AccessToken, options);
-    res.status(200).json({message: "Token saved successfully"});
+    res.status(200).json({
+      message: "Token saved successfully",
+      id:decoded.id,
+      token: token 
+    });
 }
 
 exports.logoutUser = async (req, res) => {
