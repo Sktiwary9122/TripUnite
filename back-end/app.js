@@ -4,7 +4,7 @@ const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 50, // Limit each IP to 50 requests per windowMs
+  max: 550, // Limit each IP to 50 requests per windowMs
   message: {
     success: false,
     msg: "Too many requests from this IP, please try again after 10 minutes",
