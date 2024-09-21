@@ -65,8 +65,7 @@ exports.loginUser = async (req,res)=>{
       return res.status(400).json({errors:[{msg:"Invalid email or password type"}]})
     }
     
-    const user = await User.findOne({
-      email:email});
+    const user = await User.findOne({email:email});
      
     if(!user){
     return res.status(404).json({message: "User not found"});
@@ -91,56 +90,74 @@ exports.loginUser = async (req,res)=>{
     user.AccessToken = token
     await user.save();
 
-    const decoded = jwt.verify(token, process.env.jwt_secret);
-    req.user = decoded.id;
     
     const options = {
        httpOnly: true,
        secure:true
     }
     res.cookie("AccessToken", user.AccessToken, options);
-    res.status(200).json({
-      message: "Token saved successfully",
-      id:decoded.id,
-      token: token 
-    });
+    res.status(200).json({message: "Token saved successfully"});
 }
 
-exports.logoutUser = async (req, res) => {
-  try {
+// exports.logoutUser = async (req, res) => {
+//   try {
 
-    const cookies = req.cookies;  
+//     const cookies = req.cookies;  
    
-    if (!cookies || !cookies.AccessToken) {
-      return res.status(400).json({ message: "No cookie found" });
-    }
+//     if (!cookies || !cookies.AccessToken) {
+//       return res.status(400).json({ message: "No cookie found" });
+//     }
 
-    const token = cookies.AccessToken;
+//     const token = cookies.AccessToken;
 
-    // Verify the JWT token to extract the user ID
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const userId = decoded.id;
+//     // Verify the JWT token to extract the user ID
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//     const userId = decoded.id;
 
 
-    // Find the user in the database using the decoded ID
-    const user = await User.findOne({ _id: userId });
-    if (!user) {
-      return res.status(400).json({ message: "User not found" });
-    }
+//     // Find the user in the database using the decoded ID
+//     const user = await User.findOne({ _id: userId });
+//     if (!user) {
+//       return res.status(400).json({ message: "User not found" });
+//     }
 
-    // Invalidate the user's access token by setting it to null
-    console.log(req.cookies.AccessToken);
-    user.AccessToken = null;
-    await user.save();
+//     // Invalidate the user's access token by setting it to null
+//     user.AccessToken = null;
+//     await user.save();
 
-    // Clear the token cookie
-    res.clearCookie("AccessToken");
+//     // Clear the token cookie
+//     res.clearCookie("AccessToken", { path: "/" });
 
-    // Send a success response
-    return res.status(200).json({ message: "User logged out successfully" });
+//     // Send a success response
+//     return res.status(200).json({ message: "User logged out successfully" });
 
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Server error" });
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+exports.logoutUser = async(req, res) => {
+  console.log(req.user);
+  const user =  User.findByIdAndUpdate(
+      req.user._id,
+      {
+          $set: {
+              refreshToken: undefined // this removes the field from document
+          }
+      }
+  )
+  const options = {
+      httpOnly: true,
+      secure: true
   }
-};
+
+  res.clearCookie("AccessToken", options);
+  res.clearCookie("RefreshToken", options);
+
+  res
+  .status(200)
+  .json({
+    message: "User logged out successfully",
+  })
+}
