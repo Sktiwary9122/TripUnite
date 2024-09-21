@@ -53,14 +53,11 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response=- await axios.post(
+      const response= await axios.post(
         "http://localhost:8000/api/auth/login",
         loginData,
         { withCredentials: true }
       );
-      // console.log("hello->",response.Stringify())
-      const userId = response.data.id; 
-      userIdRef.current = userId;
 
       toast.success("Login successful!");
       navigate("/");

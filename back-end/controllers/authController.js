@@ -104,6 +104,7 @@ exports.loginUser = async (req,res)=>{
       id:decoded.id,
       token: token 
     });
+    
 }
 
 exports.logoutUser = async (req, res) => {
