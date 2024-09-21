@@ -93,8 +93,9 @@ exports.loginUser = async (req,res)=>{
 
     
     const options = {
-       httpOnly: true,
-       secure:true
+        httpOnly: true,
+       secure: false,
+       SameSite : 'None'
     }
     res.cookie("AccessToken", user.AccessToken, options);
     res.status(200).json({

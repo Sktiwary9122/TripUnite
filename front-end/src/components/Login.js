@@ -59,7 +59,12 @@ function Login() {
       const response = await axios.post(
         "http://localhost:8000/api/auth/login",
         loginData,
-        { withCredentials: true }
+        { withCredentials: true,
+          headers:{
+            'Content-Type': 'application/json',
+
+          }
+         }
       );
       // console.log({"hello":response.data.Name});
       toast.success("Login successful!");
