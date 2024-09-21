@@ -15,19 +15,7 @@ router.post("/register", registerUser);
 // @access  Public
 router.post("/login", loginUser);
 router.post("/logout",verifyJwt, logoutUser);
-router.get("/checkAuth",verifyJwt,(req, res) => {
-      const user = req.user;
-      if(!user){
-           res.send("User not authenticated");
-      }
-      const isAuthenticated = true;
 
-   res.status(200).json({
-    message: "User authenticated",
-    user: user,
-    isAuthenticated: isAuthenticated,
-   })
-  });
 
 
 router.post('/createTrips',trip);
