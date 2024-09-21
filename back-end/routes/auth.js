@@ -4,6 +4,7 @@ const router = express.Router();
 const { registerUser, loginUser , logoutUser } = require("../controllers/authController");
 const {trip} = require("../controllers/userTripController");
 const {allTrips} = require("../routes/tripRoute")
+const {verifyJwt} = require("../middlware/verifyJwtMiddleware")
 // @route   POST api/auth/register
 // @desc    Register user
 // @access  Public
@@ -13,7 +14,7 @@ router.post("/register", registerUser);
 // @desc    Login user
 // @access  Public
 router.post("/login", loginUser);
-router.post("/logout", logoutUser);
+router.post("/logout",verifyJwt, logoutUser);
 
 router.post('/createTrips',trip);
 router.get('/allTrips',allTrips);
