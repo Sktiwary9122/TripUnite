@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import axios, { all } from 'axios';
+
 import images from '../image';
 function Trips(props) {
     
