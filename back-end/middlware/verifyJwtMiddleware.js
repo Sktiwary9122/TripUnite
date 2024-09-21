@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/User");
 exports.verifyJwt =async  (req,res,next)=>{
      try {
-        console.log(req.cookies);
+        // console.log(req.cookies);
         const token =  req.cookies?.AccessToken || req.header("authorization")?.replace("Bearer ", "");
         if(!token){
             res.status(401).json({message: "Token is required"})

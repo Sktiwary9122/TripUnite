@@ -15,9 +15,12 @@ function Login() {
   // useEffect(() => {
   //   userIdRef.current = "12345"; 
   // }, []);
+  // const [isLoggedin,setisLoggendin] = useState('');
+
+  const navigate = useNavigate();
+
 
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [signupData, setSignupData] = useState({
@@ -53,13 +56,16 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response= await axios.post(
+      const response = await axios.post(
         "http://localhost:8000/api/auth/login",
         loginData,
         { withCredentials: true }
       );
-
+      // console.log({"hello":response.data.Name});
       toast.success("Login successful!");
+      // setisLoggendin(response.data.Name);
+      const userId = response.data.Name; // The backend sends the user ID
+      userIdRef.current = userId;
       navigate("/");
         
     } catch (err) {

@@ -10,18 +10,21 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from '../context/userContext';
 function Page1() {
   const userIdRef = useContext(UserContext);
+  const userName = userIdRef.current;
 
-  const userId = userIdRef.current;
+ 
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [loggedInUser, setLoggedInUser] = useState(null);
+
+  
+
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    console.log({ user });
-    if (user && user !== "undefined" && user !== "") {
-      setLoggedInUser(user); // Assuming fullName is stored in localStorage
-    } else {
+    if(!userName){
       setLoggedInUser(null);
+    }
+    else{
+      setLoggedInUser(userName)
     }
   }, []);
   function visibleHandler1() {
@@ -29,20 +32,12 @@ function Page1() {
   }
   const handleLogOut = async () => {
     try {
-      // Clear user data from localStorage
-      localStorage.removeItem("user");
-      setLoggedInUser(null); // Assuming this is for managing the user state in the app
-  
-      // Call the logout endpoint
+      setLoggedInUser(null);
       await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
-  
-      // Show success notification
       toast.success("Logged out successfully");
-  
-      // Navigate to the login page
       navigate("/login");
-    } catch (error) {
-      // Handle any error that occurs during logout
+    } 
+    catch (error) {
       toast.error("Logout failed");
     }
   };
@@ -65,7 +60,7 @@ function Page1() {
           </Link>
           {loggedInUser ? (
             <div className="contact1" onClick={visibleHandler1}>
-              {t("Welcome")} {t(loggedInUser)}
+              {t("Welcome")} {userName}
             </div>
           ) : (
             <Link
@@ -75,7 +70,7 @@ function Page1() {
               <div className="contact1">{t("login")}</div>
             </Link>
           )}
-          <div className="logout  " onClick={handleLogOut}>
+          <div className="logout visible" onClick={handleLogOut}>
             Log Out
           </div>
         </div>

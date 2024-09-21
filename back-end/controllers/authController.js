@@ -86,7 +86,8 @@ exports.loginUser = async (req,res)=>{
     if(!token){
         return res.status(500).json({message: "Failed to generate token"});
     }
-
+    const decoded = jwt.verify(token,process.env.jwt_secret);
+   
     user.AccessToken = token
     await user.save();
 
@@ -98,8 +99,7 @@ exports.loginUser = async (req,res)=>{
     res.cookie("AccessToken", user.AccessToken, options);
     res.status(200).json({
       message: "Token saved successfully",
-      id:decoded.id,
-      token: token 
+      Name : user.fullName
     });
     
 }
@@ -143,7 +143,7 @@ exports.loginUser = async (req,res)=>{
 // };
 
 exports.logoutUser = async(req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   const user =  User.findByIdAndUpdate(
       req.user._id,
       {
