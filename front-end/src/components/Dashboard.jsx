@@ -43,7 +43,7 @@ function Dashboard() {
   }
 
   return (
-    <div className="bg-custom-gradient text-white h-auto flex flex-col">
+    <div className="bg-custom-gradient text-white min-h-screen h-auto flex flex-col">
       <div className="flex w-full justify-between px-20">
         <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit' }}>
           <div className="main-logo"></div>
@@ -77,6 +77,7 @@ function Dashboard() {
             {finalData.trips.map((trip) => (
               <Trips
                 key={trip._id}
+                id={trip._id}
                 title={trip.Destination}
                 count={trip.TravellerCount}
                 budget={trip.estimatedBudget}

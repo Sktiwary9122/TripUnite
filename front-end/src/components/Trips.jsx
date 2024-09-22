@@ -12,7 +12,9 @@ function Trips(props) {
         if (images[randomNumber]) {
             setImg(images[randomNumber].url);
         }
+        
     }, []);
+
 
   return (
     <div className=''>
@@ -45,7 +47,7 @@ function Trips(props) {
                 <div className="flex flex-col items-center ">
                   <div className="text-white text-xl">₹{props.budget}</div>
                   <Link to={"/join"}>
-                  <div className="book">Explore</div>
+                  <div onClick={()=>{setCurrentTrip(props.id)}} className="book">Explore</div>
                   </Link>
                 </div>
             </div>

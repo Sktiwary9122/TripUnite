@@ -7,7 +7,7 @@ const UserProvider = ({ children }) => {
   // Store user ID using useRef
   const userIdRef = useRef(null);
   const [userId, setUserId] = useState(null);
-  const [currentTrip, setCurrentTrip] = useState({});
+  const [currentTrip, setCurrentTrip] = useState(null);
  
 
   return (

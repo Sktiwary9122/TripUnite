@@ -50,10 +50,7 @@ function Main() {
 
     fetchData();
   }, []);
-  const handleTripSelect = (trip) => {
-    setCurrentTrip(trip);
-    // You could also redirect the user or perform other actions here
-  };
+  
   return (
     <div className="background">
       <div className="wrapper1">
@@ -84,15 +81,16 @@ function Main() {
               <Spinner />
             ) : (
                 tripss.trips.map((trip) => (
-                  <div key={trip._id} onClick={handleTripSelect}>
+                  
                     <Trips
                       key={trip._id}
+                      id={trip._id}
                       title={trip.Destination}
                       count={trip.TravellerCount}
                       budget={trip.estimatedBudget}
                       preference={trip.Gender}
                     />
-                  </div>
+                
                   
                 ))
               
