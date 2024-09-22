@@ -21,12 +21,6 @@ router.post("/register", registerUser);
 // @access  Public
 router.post("/login", loginUser);
 router.post("/logout",verifyJwt, logoutUser);
-<<<<<<< HEAD
-// router.post("/chechAuth",) required
-
-
-=======
->>>>>>> d9477fa7171d141c5c368f635e36778caf784fdc
 router.post('/createTrips',verifyJwt,trip);
 router.post('/joinTrips',verifyJwt,JoinTrips);
 router.post('/createFeedback', feedbackController )
