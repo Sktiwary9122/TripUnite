@@ -30,6 +30,7 @@ function Page1() {
     try {
       setLoggedInUser(null);
       await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
+      localStorage.clear();
       toast.success("Logged out successfully");
       navigate("/login");
     } 
