@@ -8,7 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from '../context/userContext';
 
 function Login() {
-  const userIdRef = useContext(UserContext);
+  // const userIdRef = useContext(UserContext);
+  const {userIdRef, userId, setUserId, currentTrip, setCurrentTrip } = useContext(UserContext);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ function Login() {
         setIsAuthenticated(true);
         const user = JSON.parse(storedUserData);
         setUserData(user);
+        console.log(user)
         userIdRef.current = `Welcome ${user.fullName}`; // Set userIdRef
       }
   }, [userIdRef]);
@@ -74,10 +76,11 @@ function Login() {
       toast.success("Login successful!");
       const userId = response.data.Name;
       userIdRef.current = userId;
+      setUserId(userId);
       setIsAuthenticated(true);
       setUserData(response.data);
       localStorage.setItem('isAuthenticated', 'true'); // Use sessionStorage
-      localStorage.setItem('userData', JSON.stringify(response.data)); // Use sessionStorage
+      localStorage.setItem('userData', JSON.strixngify(response.data)); // Use sessionStorage
       navigate("/");
     } catch (err) {
       toast.error(err.response?.data?.errors[0]?.msg || "Login failed!");
