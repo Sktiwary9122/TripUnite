@@ -71,9 +71,11 @@ function Page1() {
             <button className="bg-[#a767e3] rounded-xl p-2" onClick={handleLogOut}>
               Log Out
             </button>
+            <Link to={'/dashboard'}>
             <button className="bg-[#a767e3] rounded-xl p-2 ">
               Dashboard
             </button>
+            </Link>
            
           </div>
           
