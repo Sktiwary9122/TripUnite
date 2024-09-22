@@ -1,5 +1,31 @@
 
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const { required } = require("../authN/tripsType");
+const { number } = require("zod");
+
+const details = {
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
+    Name:{
+      type:String,
+      required:true
+    },
+    Contact:{
+      type:Number,
+      required:true
+    },
+    Gender:{
+      type:String,
+      required:true
+    },
+    Age:{
+      type:Number,
+      required:true
+    }
+}
 
 const tripSchema = new mongoose.Schema({
   Name: {
@@ -64,8 +90,10 @@ const tripSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref:"User", // Array of strings for user IDs or names
     required: false,
-}
-  
+},
+joinedBy:[
+  details
+]
 });
 const Trip = mongoose.model('Trip', tripSchema);
 

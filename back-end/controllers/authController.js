@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const zod= require('zod');
 const User = require("../models/User");
+const Trio = require("../models/Trips");
+const { trip } = require('./userTripController');
 
 // const userZod = zod.object({
 //   email: zod.string().email(),
@@ -12,6 +14,9 @@ const User = require("../models/User");
 const emailParser  = zod.string().email();
 const passwordParser = zod.string().min(6);
 const fullNameParser = zod.string().max(50);
+const ageParser = zod.number().max(2);
+const contactParser=zod.string().min(10).max(14);
+const genderParser=zod.string();
 
 
 
@@ -20,10 +25,12 @@ exports.registerUser = async (req,res)=>{
       const email = req.body.email;
       const password = req.body.password;
       const fullName = req.body.fullName;
+     
       // const CorrectDetails = userZod.safeParse(user); 
       const isEmail = emailParser.safeParse(email);
       const isPassword = passwordParser.safeParse(password);
       const isFullName = fullNameParser.safeParse(fullName);
+     
 
       if(!isEmail.success){
         return res.status(400).json({errors:[{msg:"Invalid email"}]})
@@ -34,6 +41,7 @@ exports.registerUser = async (req,res)=>{
       if(!isFullName.success){
         return res.status(400).json({errors:[{msg:"Full name must be at least 2 characters long"}]})
       }
+    
 
       const userExists = await User.findOne({email:email});
       const salt = await bcrypt.genSalt(10);
@@ -157,7 +165,7 @@ exports.logoutUser = async(req, res) => {
       httpOnly: true,
       secure: true
   }
-  
+
   res.clearCookie("AccessToken", options);
   res.clearCookie("RefreshToken", options);
 
@@ -168,3 +176,51 @@ exports.logoutUser = async(req, res) => {
   })
 }
 // Middleware to verify JWT token from cookies
+
+//Controller to join trips:
+exports.JoinTrips= async (req,res)=>{
+    console.log(req.user);
+    const tripId = req.params;
+
+    const {Name , Contact , Age , Gender } = req.body;
+
+    const isName = fullNameParser.safeParse(Name);
+    const isAge = ageParser.safeParse(Age);
+    const isContact = contactParser.safeParse(Contact);
+    const isGender = genderParser.safeParse(Gender);
+
+    if(!isName.success){
+      return res.status(400).json({message: "Invalid Name"});
+    }
+
+    if(!isAge.success){
+      return res.status(400).json({message: "Invalid Age"});
+    }
+    if(!isContact.success){
+      return res.status(400).json({message: "Invalid Contact"});
+    }
+    if(!isGender.success){
+      return res.status(400).json({message: "Invalid Gender"});
+    }
+
+    if(!tripId){
+      return res.status(400).json({message: "Trip ID is required"});
+    }
+    
+    const tirp = await Trips.findOne({tripId});
+    
+    if(!trip){
+      return res.status(400).json({message: "Trip not found"});
+    }
+    
+    trip.joinedBy.Name = Name;
+    trip.joinedBy.Contact = Contact;
+    trip.joinedBy.Age = Age;
+    trip.joinedBy.Gender = Gender;
+    trip.joinedBy.userId = req.user._id;
+    trip.save();
+
+    res.status(200).json({
+      message: "Trip joined successfully",
+    })
+}

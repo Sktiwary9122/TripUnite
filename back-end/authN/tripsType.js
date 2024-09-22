@@ -1,5 +1,6 @@
 const  zod  = require('zod');
 
+
 const tripSchema = zod.object({
   Name: zod.string().nonempty(),
   Destination: zod.string().nonempty(),
@@ -18,6 +19,7 @@ const tripSchema = zod.object({
   MaxAge: zod.number(),
   Remark: zod.string().optional(),
   createdBy: zod.string().optional() // Refers to user IDs, validated as strings
+  
 });
 
 module.exports = tripSchema;
