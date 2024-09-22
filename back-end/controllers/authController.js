@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const zod= require('zod');
 const User = require("../models/User");
-const Trio = require("../models/Trips");
+const Trip = require("../models/Trips");
 const { trip } = require('./userTripController');
 
 // const userZod = zod.object({
@@ -17,7 +17,6 @@ const fullNameParser = zod.string().max(50);
 const ageParser = zod.number().max(2);
 const contactParser=zod.string().min(10).max(14);
 const genderParser=zod.string();
-
 
 
 exports.registerUser = async (req,res)=>{
@@ -175,7 +174,6 @@ exports.logoutUser = async(req, res) => {
     message: "User logged out successfully",
   })
 }
-// Middleware to verify JWT token from cookies
 
 //Controller to join trips:
 exports.JoinTrips= async (req,res)=>{
@@ -224,3 +222,31 @@ exports.JoinTrips= async (req,res)=>{
       message: "Trip joined successfully",
     })
 }
+
+//GEt particular Trip data
+exports.getTrips = async (req, res) => {
+  // Extract trip_id from params
+  const { trip_id } = req.params;
+
+  // Check if trip_id is valid
+  if (!trip_id) {
+      return res.status(400).json({ msg: "Invalid trip id" });
+  }
+
+  try {
+      // Find the trip by ID
+      const trip = await Trip.findById(trip_id);
+
+      // If no trip found, return a 404 error
+      if (!trip) {
+          return res.status(404).json({ msg: "Trip not found" });
+      }
+
+      // Return the trip data
+      return res.status(200).json({ trip });
+  } catch (error) {
+      // If there is an error in fetching the trip, return a 500 error
+      console.error("Error fetching trip:", error);
+      return res.status(500).json({ msg: "Server error" });
+  }
+};
