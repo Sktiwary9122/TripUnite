@@ -30,7 +30,7 @@ function Trips(props) {
             }}
         >
             
-            <p className="heading">{props.title}</p>
+            <p className="heading capitalize">{props.title}</p>
             <div className="bottom">
                 <div className="flex flex-col ">
                   <div className='flex items-center gap-2'>

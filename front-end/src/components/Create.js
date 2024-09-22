@@ -260,8 +260,8 @@ function Create() {
                                         type="radio"
                                         id="none"
                                         name="Gender"
-                                        value=""
-                                        checked={formData.Gender === ''}
+                                        value="None"
+                                        checked={formData.Gender === 'None'}
                                         onChange={handleInputChange}
                                     />
                                     <label htmlFor="none">{t('nopreference')}</label>
