@@ -16,7 +16,7 @@ router.post("/register", registerUser);
 // @access  Public
 router.post("/login", loginUser);
 router.post("/logout",verifyJwt, logoutUser);
-
+// router.post("/chechAuth",) required
 
 
 router.post('/createTrips',verifyJwt,trip);

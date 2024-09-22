@@ -20,6 +20,7 @@ function Page1() {
     if (isAuthenticated === 'true' && storedLocalData) {
       const userData = JSON.parse(storedLocalData);// Parse the stored JSON data
       setLoggedInUser(true);
+      // console.log(userData.user.fullName);
       setUsername(userData.user.fullName); // Use the parsed data
     }
   }, []);
