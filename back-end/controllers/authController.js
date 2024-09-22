@@ -14,7 +14,7 @@ const { trip } = require('./userTripController');
 const emailParser  = zod.string().email();
 const passwordParser = zod.string().min(6);
 const fullNameParser = zod.string().max(50);
-const ageParser = zod.number().max(2);
+const ageParser = zod.number();
 const contactParser=zod.string().min(10).max(14);
 const genderParser=zod.string();
 
@@ -176,52 +176,66 @@ exports.logoutUser = async(req, res) => {
 }
 
 //Controller to join trips:
-exports.JoinTrips= async (req,res)=>{
-    console.log(req.user);
-    const tripId = req.params;
+exports.JoinTrips = async (req, res) => {
+  try {
+      console.log(req.user);
+      const tripId = req.params.trip_id;  // Access 'trip_id' as defined in the route
 
-    const {Name , Contact , Age , Gender } = req.body;
+      const { Name, Contact, Age, Gender } = req.body;
 
-    const isName = fullNameParser.safeParse(Name);
-    const isAge = ageParser.safeParse(Age);
-    const isContact = contactParser.safeParse(Contact);
-    const isGender = genderParser.safeParse(Gender);
+      // Validate input
+      const isName = fullNameParser.safeParse(Name);
+      const isAge = ageParser.safeParse(Age);
+      const isContact = contactParser.safeParse(Contact);
+      const isGender = genderParser.safeParse(Gender);
 
-    if(!isName.success){
-      return res.status(400).json({message: "Invalid Name"});
-    }
+      if (!isName.success) {
+          return res.status(400).json({ message: "Invalid Name" });
+      }
 
-    if(!isAge.success){
-      return res.status(400).json({message: "Invalid Age"});
-    }
-    if(!isContact.success){
-      return res.status(400).json({message: "Invalid Contact"});
-    }
-    if(!isGender.success){
-      return res.status(400).json({message: "Invalid Gender"});
-    }
+      if (!isAge.success) {
+          return res.status(400).json({ message: "Invalid Age" });
+      }
+      if (!isContact.success) {
+          return res.status(400).json({ message: "Invalid Contact" });
+      }
+      if (!isGender.success) {
+          return res.status(400).json({ message: "Invalid Gender" });
+      }
 
-    if(!tripId){
-      return res.status(400).json({message: "Trip ID is required"});
-    }
-    
-    const tirp = await Trips.findOne({tripId});
-    
-    if(!trip){
-      return res.status(400).json({message: "Trip not found"});
-    }
-    
-    trip.joinedBy.Name = Name;
-    trip.joinedBy.Contact = Contact;
-    trip.joinedBy.Age = Age;
-    trip.joinedBy.Gender = Gender;
-    trip.joinedBy.userId = req.user._id;
-    trip.save();
+      if (!tripId) {
+          return res.status(400).json({ message: "Trip ID is required" });
+      }
 
-    res.status(200).json({
-      message: "Trip joined successfully",
-    })
-}
+      // Fetch the trip
+      const trip = await Trip.findById(tripId);
+
+      if (!trip) {
+          return res.status(404).json({ message: "Trip not found" });
+      }
+
+      // Assuming joinedBy is an array and you are adding new participants
+      trip.joinedBy.push({
+          Name,
+          Contact,
+          Age,
+          Gender,
+          userId: req.user._id
+      });
+
+      // Save trip document
+      await trip.save();
+
+      res.status(200).json({
+          message: "Trip joined successfully",
+      });
+  } catch (error) {
+      console.error("Error joining trip: ", error);
+      res.status(500).json({ message: "Server error" });
+  }
+};
+
+
 
 //GEt particular Trip data
 exports.getTrips = async (req, res) => {

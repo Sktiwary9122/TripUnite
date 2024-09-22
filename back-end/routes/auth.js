@@ -10,6 +10,7 @@ const Trip = require("../models/Trips")
 const {verifyJwt} = require("../middlware/verifyJwtMiddleware");
 const { userTrips } = require("../controllers/dashboardController");
 const { verify } = require("jsonwebtoken");
+const { joinedTrips } = require("../controllers/joinedTripsController");
 
 // @route   POST api/auth/register
 // @desc    Register user
@@ -22,8 +23,9 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/logout",verifyJwt, logoutUser);
 router.post('/createTrips',verifyJwt,trip);
-router.post('/joinTrips',verifyJwt,JoinTrips);
-router.post('/createFeedback', feedbackController )
+router.post('/joinTrips/:trip_id',verifyJwt,JoinTrips);
+router.post('/createFeedback', feedbackController );
+router.get('/joinedTrips',verifyJwt,joinedTrips)
 
 router.get('/allTrips',allTrips);
 router.get('/userTrips',verifyJwt,userTrips);

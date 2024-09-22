@@ -33,7 +33,7 @@ function About() {
                 <h2>{t('MeetOurdevelopers')}</h2>
                 <div className="about-dev">
                     <div className="about-developers">
-                        <div className='about-photo'></div>
+                        <div className='about-photo1'></div>
                         <h3>{t('AyushSah')}</h3>
                         
                         <div className="about-icon">
@@ -51,7 +51,7 @@ function About() {
                         </div>
                     </div>
                     <div className="about-developers">
-                    <div className='about-photo2'></div>
+                    <div className='about-photo1'></div>
                         <h3>{t('AnishaKumari')}</h3>
                         
                         <div className="about-icon">
@@ -60,7 +60,7 @@ function About() {
                         </div>
                     </div>
                     <div className="about-developers">
-                        <div className='about-photo3'></div>
+                        <div className='about-photo1'></div>
                         <h3>{t('SanyaSingh')}</h3>
                         <div className="about-icon">
                             <FaLinkedin className='about-icons'/>

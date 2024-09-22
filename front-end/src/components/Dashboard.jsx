@@ -33,6 +33,25 @@ function Dashboard() {
     }
   }
 
+  async function fetchJoinedTrips() {
+    setLoading(true); // Start loading
+    try {
+      const response = await axios.get("http://localhost:8000/api/auth/joinedTrips", {
+        withCredentials: true,
+      });
+      setFinalData(response.data); // Set the data from the response
+
+      const storedLocalData = localStorage.getItem('userData');
+      const userData = JSON.parse(storedLocalData);
+      setUserName(userData.user.fullName);
+      setWho(false);
+    } catch (error) {
+      console.error("Error fetching user trips:", error);
+    } finally {
+      setLoading(false); // End loading
+    }
+  }
+
   useEffect(() => {
     fetchUserTrips();
   }, []);
@@ -66,8 +85,8 @@ function Dashboard() {
       <h1 className="text-5xl p-10 uppercase">Welcome {userName}</h1>
       <div className="border-t-2 w-[80%] mx-auto flex">
         <div className="border-r-2 w-[20%] p-7 gap-10 flex flex-col">
-          <div onClick={fetchUserTrips} className="text-xl p-5">Created trips</div>
-          <div className="text-xl p-5 pt-7">Joined trips</div>
+          <div onClick={fetchUserTrips} className="cursor-pointer text-xl p-5">Created trips</div>
+          <div onClick={fetchJoinedTrips} className="text-xl cursor-pointer p-5 pt-7">Joined trips</div>
         </div>
         <div>
           <div className="text-xl mx-5 mt-5">

@@ -98,10 +98,10 @@ const resources = {
       WelcometoTripUnite:
         "Welcome to TripUnite, your ultimate travel companion for connecting with like-minded explorers. At TripUnite, we believe that the best adventures are those shared with others who share your passion for travel. Our platform offers personalized trip planning, secure bookings, and a wealth of travel resources to ensure your journey is seamless and memorable.",
       MeetOurdevelopers: "Meet Our Developers",
-      AyushSah: "Ayush Sah",
+      AyushSah: "Rahul Thakur",
       Shudhanshu: "Shudhanshu",
-      AnishaKumari: "Anisha Kumari",
-      SanyaSingh: "Sanya Singh",
+      AnishaKumari: "Shivam Mourya",
+      SanyaSingh: "Mandeep",
       Reachouttous: "Reach out to us!",
       ContactInformation: "Contact Information",
       Phno: "Ph. no.",
