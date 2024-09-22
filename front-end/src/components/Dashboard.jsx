@@ -5,6 +5,7 @@ import Trips from './Trips';
 function Dashboard() {
   const [finalData, setFinalData] = useState([]); // initialize as an object
   const[userName,setuseName] = useState('');
+  
 
   async function fetchuserTrips() {
     const response = await axios.get("http://localhost:8000/api/auth/userTrips", {
@@ -25,7 +26,7 @@ function Dashboard() {
 
     console.log(userData.user.fullName)
     setuseName(userData.user.fullName)
-  }, []);
+  }, [finalData]);
 
   // Ensure finalData.trips exists and is an array before rendering
   if (!finalData.trips || finalData.trips.length === 0) {
