@@ -64,8 +64,8 @@ function JoinTrip() {
         </div>
         <div className="flex gap-10 pb-14 px-20 w-full ">
           <div className="flex flex-col gap-10 w-[70%]">
-            <h1 className="text-5xl font-semibold" >{trip.Destination}</h1>
-            <p className="text-[1.5rem]" >{trip.Description}</p>
+            <h1 className="text-5xl font-semibold uppercase" >{trip.Destination}</h1>
+            <p className="text-[1.5rem] text-justify" >{trip.Description}</p>
             <div className="relative flex gap-5">
               <div className="">
                 <div className="date-price">
