@@ -1,35 +1,32 @@
 import React, { useState } from 'react';
 import './Create.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { TfiWorld } from 'react-icons/tfi';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
-
+// Adjust the import based on your file structure
 
 function Create() {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    
+
     // Define state for all form fields
     const [formData, setFormData] = useState({
-        Name:'',
+        Name: '',
         Destination: '',
         Description: '',
         StartDate: '',
         EndDate: '',
-        // Location: '',
         estimatedBudget: '',
         TravellerCount: '',
-        localGuide: '',
+        localGuide: false,
         MeetUPLocation: '',
-        Gender:'',
+        Gender: '',
         MinAge: '',
         MaxAge: '',
-        Remarks: '',
-        // createdBy:''
+        Remarks: ''
     });
 
     // Handle input change
@@ -41,21 +38,39 @@ function Create() {
         }));
     }
 
-    // Form submit handler
-    function submithandler(e) {
-        e.preventDefault(); // Prevent page reload
-        axios.post("http://localhost:8000/api/auth/createTrips", formData)
-            .then(response => {
-                // Handle success
-                toast.success("TRIP CREATED");
-                navigate('/main');
+    // Handle boolean value for radio buttons (localGuide)
+    function handleRadioChange(e) {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value === 'true' // Convert to boolean
+        }));
+    }
 
-            })
-            .catch(error => {
-                // Handle error
-                toast.error("Error creating trip");
-                console.error(error);
-            });
+    // Form submit handler
+    async function submithandler(e) {
+        e.preventDefault();
+
+        // Validate the form data with Zod
+        try {
+            const response = await axios.post(
+                "http://localhost:8000/api/auth/createTrips", 
+                {
+                    ...formData,
+                    estimatedBudget: parseFloat(formData.estimatedBudget),
+                    TravellerCount: formData.TravellerCount ? parseInt(formData.TravellerCount) : undefined,
+                    MinAge: parseInt(formData.MinAge),
+                    MaxAge: parseInt(formData.MaxAge),
+                },
+                { withCredentials: true } // Ensure cookies are included
+            );
+
+            toast.success("TRIP CREATED");
+            navigate('/main');
+        } catch (error) {
+            toast.error("Error creating trip");
+            console.error("Error creating trip:", error.errors || error); // Log detailed error from Zod
+        }
     }
 
     return (
@@ -79,7 +94,7 @@ function Create() {
                         </Link>
                     </ul>
                 </div>
-                
+
                 <form className="create-section" onSubmit={submithandler}>
                     {/* left section */}
                     <div className="create-left">
@@ -95,7 +110,7 @@ function Create() {
                                     type="text"
                                     className="create-tripinput1"
                                     name="Name"
-                                    value= {formData.Name}
+                                    value={formData.Name}
                                     onChange={handleInputChange}
                                     required
                                 />
@@ -155,7 +170,7 @@ function Create() {
                             <div className="create-budget">
                                 <p>{t('estimatedbudget')}</p>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="create-tripinput1"
                                     name="estimatedBudget"
                                     value={formData.estimatedBudget}
@@ -171,7 +186,6 @@ function Create() {
                                     name="MeetUPLocation"
                                     value={formData.MeetUPLocation}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Location"
                                     required
                                 />
                             </div>
@@ -185,9 +199,9 @@ function Create() {
                                         type="radio"
                                         id="yes"
                                         name="localGuide"
-                                        value="yes"
-                                        checked={formData.localGuide === "yes"}
-                                        onChange={handleInputChange}
+                                        value="true"
+                                        checked={formData.localGuide === true}
+                                        onChange={handleRadioChange}
                                     />
                                     <label htmlFor="yes">{t('yes')}</label>
                                 </div>
@@ -196,9 +210,9 @@ function Create() {
                                         type="radio"
                                         id="no"
                                         name="localGuide"
-                                        value="no"
-                                        checked={formData.localGuide === "no"}
-                                        onChange={handleInputChange}
+                                        value="false"
+                                        checked={formData.localGuide === false}
+                                        onChange={handleRadioChange}
                                     />
                                     <label htmlFor="no">{t('no')}</label>
                                 </div>
@@ -213,7 +227,6 @@ function Create() {
                                 name="TravellerCount"
                                 value={formData.TravellerCount}
                                 onChange={handleInputChange}
-                                required
                             />
                         </div>
 
@@ -247,8 +260,8 @@ function Create() {
                                         type="radio"
                                         id="none"
                                         name="Gender"
-                                        value="none"
-                                        checked={formData.Gender === 'No Preference'}
+                                        value=""
+                                        checked={formData.Gender === ''}
                                         onChange={handleInputChange}
                                     />
                                     <label htmlFor="none">{t('nopreference')}</label>
@@ -268,7 +281,7 @@ function Create() {
                                     onChange={handleInputChange}
                                     required
                                 />
-                                <input
+                             <input
                                     type="number"
                                     className="create-tripinput1"
                                     name="MaxAge"
@@ -302,4 +315,5 @@ function Create() {
     );
 }
 
-export default Create
+export default Create;
+                                   

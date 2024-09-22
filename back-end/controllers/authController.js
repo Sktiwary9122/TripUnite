@@ -93,14 +93,14 @@ exports.loginUser = async (req,res)=>{
 
     
     const options = {
-        httpOnly: true,
-       secure: false,
+       httpOnly: true,
+       secure: true,
        SameSite : 'None'
     }
     res.cookie("AccessToken", user.AccessToken, options);
     res.status(200).json({
       message: "Token saved successfully",
-      Name : user.fullName
+      user : user
     });
     
 }
@@ -157,7 +157,7 @@ exports.logoutUser = async(req, res) => {
       httpOnly: true,
       secure: true
   }
-
+  
   res.clearCookie("AccessToken", options);
   res.clearCookie("RefreshToken", options);
 
