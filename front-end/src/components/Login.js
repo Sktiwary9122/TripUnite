@@ -80,7 +80,7 @@ function Login() {
       setIsAuthenticated(true);
       setUserData(response.data);
       localStorage.setItem('isAuthenticated', 'true'); // Use sessionStorage
-      localStorage.setItem('userData', JSON.strixngify(response.data)); // Use sessionStorage
+      localStorage.setItem('userData', JSON.stringify(response.data)); // Use sessionStorage
       navigate("/");
     } catch (err) {
       toast.error(err.response?.data?.errors[0]?.msg || "Login failed!");
