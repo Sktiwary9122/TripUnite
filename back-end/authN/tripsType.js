@@ -4,10 +4,10 @@ const tripSchema = zod.object({
   Name: zod.string().nonempty(),
   Destination: zod.string().nonempty(),
   Description: zod.string().nonempty(),
-  StartDate: zod.date(),
-  EndDate: zod.date(),
+  StartDate: zod.string(),
+  EndDate: zod.string(),
   // Location: zod.string().nonempty(),
-  estimatedBudget: zod.string().nonempty(),
+  estimatedBudget: zod.number(),
   TravellerCount: zod.number().optional(), // Not required, so optional
   localGuide: zod.boolean(),
   MeetUPLocation: zod.string().nonempty(),
@@ -17,7 +17,7 @@ const tripSchema = zod.object({
   MinAge: zod.number(),
   MaxAge: zod.number(),
   Remark: zod.string().optional(),
-  createdBy: zod.string() // Refers to user IDs, validated as strings
+  createdBy: zod.string().optional() // Refers to user IDs, validated as strings
 });
 
 module.exports = tripSchema;

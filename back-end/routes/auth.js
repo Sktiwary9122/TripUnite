@@ -18,7 +18,7 @@ router.post("/logout",verifyJwt, logoutUser);
 
 
 
-router.post('/createTrips',trip);
+router.post('/createTrips',verifyJwt,trip);
 router.get('/allTrips',allTrips);
 
 module.exports = router;

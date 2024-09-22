@@ -1,8 +1,9 @@
 const jwt = require("jsonwebtoken")
 const User = require("../models/User");
 exports.verifyJwt =async  (req,res,next)=>{
+  console.log("first")
      try {
-        // console.log(req.cookies);
+
         const token =  req.cookies?.AccessToken || req.header("authorization")?.replace("Bearer ", "");
         if(!token){
             res.status(401).json({message: "Token is required"})
@@ -12,6 +13,7 @@ exports.verifyJwt =async  (req,res,next)=>{
         if(!decodedToken){
           res.status(401).json({message: "token is invalid"});
         }
+
         const user =await User.findById(decodedToken.id);
 
         if(!user){

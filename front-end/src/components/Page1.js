@@ -18,10 +18,9 @@ function Page1() {
     const storedLocalData = localStorage.getItem('userData');
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (isAuthenticated === 'true' && storedLocalData) {
-      const userData = JSON.parse(storedLocalData); // Parse the stored JSON data
+      const userData = JSON.parse(storedLocalData);// Parse the stored JSON data
       setLoggedInUser(true);
-      setUsername(userData.Name); // Use the parsed data
-      console.log(userData.Name); // Log the name to the console
+      setUsername(userData.user.fullName); // Use the parsed data
     }
   }, []);
   function visibleHandler1() {
