@@ -7,6 +7,7 @@ exports.trip = async(req,res)=> {
    try {
       const createPayload = req.body;
       const isCorrect= authN.safeParse(createPayload)
+
       if(!isCorrect){
        return res.status(400).json({message: "AuthN is required"});
       }

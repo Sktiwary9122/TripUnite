@@ -18,6 +18,7 @@ const tripSchema = zod.object({
   MaxAge: zod.number(),
   Remark: zod.string().optional(),
   createdBy: zod.string() // Refers to user IDs, validated as strings
+
 });
 
 module.exports = tripSchema;

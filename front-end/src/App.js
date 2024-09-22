@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import About from "./components/About.js";
 import { useTranslation } from "react-i18next";
 import Contact from "./components/Contact.js";
+import Dashboard from "./components/Dashboard.jsx";
 
 function App() {
   const { i18n } = useTranslation();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/signup" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create" element={<Create />} />
         <Route path="/join" element={<JoinTrip/>}></Route>
         <Route path="/about" element={<About/>}/>

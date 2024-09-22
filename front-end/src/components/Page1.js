@@ -25,7 +25,7 @@ function Page1() {
     }
   }, []);
   function visibleHandler1() {
-    document.querySelector(".logout").classList.toggle("visible");
+    document.querySelector(".buttons").classList.toggle("visible");
   }
   const handleLogOut = async () => {
     try {
@@ -67,9 +67,16 @@ function Page1() {
               <div className="contact1">{t("login")}</div>
             </Link>
           )}
-          <div className="logout visible" onClick={handleLogOut}>
-            Log Out
+          <div className="buttons flex flex-col gap-2 absolute top-20 right-16 visible">
+            <button className="bg-[#a767e3] rounded-xl p-2" onClick={handleLogOut}>
+              Log Out
+            </button>
+            <button className="bg-[#a767e3] rounded-xl p-2 ">
+              Dashboard
+            </button>
+           
           </div>
+          
         </div>
       </nav>
       <div className="mainbody">

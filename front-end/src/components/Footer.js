@@ -36,7 +36,7 @@ function Footer() {
           <div>
             <p>xyz@gmail.com</p>
             <p>1234567890</p>
-            <div className="icons">
+            <div className=" flex icons">
               <a href="">
                 <FaFacebook />
               </a>

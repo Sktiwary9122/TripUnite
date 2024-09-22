@@ -12,9 +12,9 @@ function Trips(props) {
             setImg(images[randomNumber].url);
         }
     }, []);
-    const [im1g,setIm1g] = useState('');
+
   return (
-    <div className='w-[40%] h-[50%]'>
+    <div className=''>
         <div className=""
             style={{ 
                 backgroundImage: `url(${img})`, 
@@ -43,7 +43,9 @@ function Trips(props) {
                 </div>
                 <div className="flex flex-col items-center ">
                   <div className="text-white text-xl">₹{props.budget}</div>
-                  <div className="book">Join</div>
+                  <Link to={"/join"}>
+                  <div className="book">Explore</div>
+                  </Link>
                 </div>
             </div>
         </div>

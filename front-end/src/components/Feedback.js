@@ -41,9 +41,9 @@ function Feedback() {
             <input type="text" placeholder={t("name")} id="name" />
             <input type="text" placeholder={t("email")} id="email" />
             <textarea placeholder={t("message")} id="Message" />
-            <div className="rate">
+            <div className="rate flex">
               {t("Rate")} :
-              <span>
+              <span className="flex">
                 <IoStarSharp />
                 <IoStarSharp />
                 <IoStarSharp />

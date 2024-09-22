@@ -10,13 +10,13 @@ function About() {
   return (
     <div className="about-wrapper">
         <div className="about-container">
-            <div className="about-navbar">
+            <div className="flex justify-between w-full text-white">
             <Link to={"/"} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                 <div className='about-logo'></div></Link>
-                <ul className="about-options">
+                <ul className="flex gap-20 text-xl mt-4 ">
                 <Link to={"/"} style={{ color: 'inherit', textDecoration: 'inherit'}}> <ul className="about-home">{t('home')}</ul></Link>
                   
-                  <LanguageSelector className='.about-lang'/>
+                  <LanguageSelector className=''/>
                   <Link to={"/contact"} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                   <ul className="about-contact">{t('contact')}</ul>
                   </Link>

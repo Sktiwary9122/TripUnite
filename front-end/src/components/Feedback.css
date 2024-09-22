@@ -67,7 +67,6 @@
 .stars{
     display: flex;
     position: absolute;
-    margin-top: -14px;
     
 }
 
@@ -128,8 +127,8 @@
     font-weight: 400;
     font-size: 20px;
     text-align: center;
-    margin-left: 9rem;
-    margin-top: 4rem;
+    margin-left: 7rem;
+    margin-top: 2rem;
     color: #FFFFFF;
     filter: drop-shadow(0 0 5px #737373);
 }
