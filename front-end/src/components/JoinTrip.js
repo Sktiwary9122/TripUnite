@@ -1,10 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import "./JoinTrip.css";
 import { Link } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { UserContext } from '../context/userContext';
 function JoinTrip() {
     const{ t}=useTranslation()
+    const {userIdRef, userId, setUserId, currentTrip, setCurrentTrip } = useContext(UserContext);
+    console.log("yuhuuuuuuuuu",currentTrip);
   return (
     <div class="join-wrapper">
       <div class="join-container">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import './Main.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +10,12 @@ import Spinner from './Spinner';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { UserContext } from '../context/userContext';
+import { changeLanguage } from 'i18next';
 
 function Main() {
-   const settings = {
+  const {userIdRef, userId, setUserId, currentTrip, setCurrentTrip } = useContext(UserContext);
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -36,7 +39,8 @@ function Main() {
         const allTrips = await response.json();
         console.log('Fetched trips:', allTrips); // Log the fetched trips
         setTrips(allTrips);
-      } catch (error) {
+      } 
+      catch (error) {
         console.error('Fetch error:', error); // Log the error
         toast.error('Please try again!');
       } finally {
@@ -46,7 +50,10 @@ function Main() {
 
     fetchData();
   }, []);
-
+  const handleTripSelect = (trip) => {
+    setCurrentTrip(trip);
+    // You could also redirect the user or perform other actions here
+  };
   return (
     <div className="background">
       <div className="wrapper1">
@@ -77,14 +84,16 @@ function Main() {
               <Spinner />
             ) : (
                 tripss.trips.map((trip) => (
-                  <Trips
-                    key={trip._id}
-                    title={trip.Destination}
-                    count={trip.TravellerCount}
-                    budget={trip.estimatedBudget}
-                    preference={trip.Gender}
-                    
-                  />
+                  <div key={trip._id} onClick={handleTripSelect}>
+                    <Trips
+                      key={trip._id}
+                      title={trip.Destination}
+                      count={trip.TravellerCount}
+                      budget={trip.estimatedBudget}
+                      preference={trip.Gender}
+                    />
+                  </div>
+                  
                 ))
               
             )}

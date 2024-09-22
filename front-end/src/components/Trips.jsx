@@ -1,9 +1,10 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect,useState,useContext } from 'react'
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { UserContext } from '../context/userContext';
 import images from '../image';
 function Trips(props) {
+  const {userIdRef, userId, setUserId, currentTrip, setCurrentTrip } = useContext(UserContext);
     
     const [img,setImg] = useState('');
     useEffect(() => { 
